@@ -1,0 +1,1 @@
+import subprocessimport osdef start_capture(interface="eth0"):    os.makedirs("capture", exist_ok=True)    return subprocess.Popen([        "sudo",        "tcpdump",        "-i", interface,        "-w", "capture/live_%Y%m%d_%H%M%S.pcap"    ])
