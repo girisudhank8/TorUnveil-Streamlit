@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 import os
 
 if os.environ.get("STREAMLIT_SERVER_HEADLESS") == "true":
@@ -79,7 +78,7 @@ if st.session_state.results:
     st.metric("Total Suspected Tor Flows", total_tor)
 else:
     st.info("Waiting for PCAP files in `capture/` directory…")
-=======
+
 import os
 
 if os.environ.get("STREAMLIT_SERVER_HEADLESS") == "true":
@@ -167,4 +166,3 @@ if st.session_state.results:
 
 
 
->>>>>>> 237eca04a046cf3c0b8f272e544f638a81092f13
