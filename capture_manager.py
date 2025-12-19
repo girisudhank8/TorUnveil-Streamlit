@@ -1,1 +1,1 @@
-import subprocessimport osdef start_capture(interface="eth0"):    os.makedirs("capture", exist_ok=True)    return subprocess.Popen([        "sudo",        "tcpdump",        "-i", interface,        "-w", "capture/live_%Y%m%d_%H%M%S.pcap"    ])
+import subprocessdef start_capture(interface="eth0"):    return subprocess.Popen([        "tcpdump",        "-i", interface,        "-w", "capture/live_%Y%m%d_%H%M%S.pcap"    ])def stop_capture(proc):    if proc:        proc.terminate()

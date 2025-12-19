@@ -4,6 +4,16 @@ import os
 if os.environ.get("STREAMLIT_SERVER_HEADLESS") == "true":
     os.environ["STREAMLIT_SERVER_ENABLE_CORS"] = "false"
 
+from capture_manager import start_capture, stop_capture
+if "capture_proc" not in st.session_state:
+    st.session_state.capture_proc = None
+if st.button("🎥 Start Capture"):
+    st.session_state.capture_proc = start_capture()
+
+if st.button("⛔ Stop Capture"):
+    stop_capture(st.session_state.capture_proc)
+    st.session_state.capture_proc = None
+
 
 import streamlit as st
 import time
@@ -127,6 +137,9 @@ if st.session_state.running:
     time.sleep(1)
     st.experimental_rerun()
 
+
+
+
 # ---------------- DISPLAY ----------------
 if st.session_state.results:
     st.subheader("📊 Live Analysis Results")
@@ -140,4 +153,18 @@ if st.session_state.results:
     st.metric("Total Suspected Tor Flows", total_tor)
 else:
     st.info("Waiting for PCAP files in `capture/` directory…")
+
+import pandas as pd
+
+if st.session_state.results:
+    df = pd.DataFrame(st.session_state.results)
+
+    st.subheader("📈 Tor Confidence Over Time")
+    st.line_chart(df["avg_confidence"])
+
+    st.subheader("📊 Suspected Tor Flows per PCAP")
+    st.bar_chart(df["suspected_tor"])
+
+
+
 >>>>>>> 237eca04a046cf3c0b8f272e544f638a81092f13

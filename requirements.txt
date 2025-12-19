@@ -1,11 +1,8 @@
-<<<<<<< HEAD
 streamlit
 pandas
 numpy
 scapy
-=======
-streamlit
-pandas
-numpy
-scapy
->>>>>>> 237eca04a046cf3c0b8f272e544f638a81092f13
+pyinstaller
+pywebview
+pystray
+pillow
