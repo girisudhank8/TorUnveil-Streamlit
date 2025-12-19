@@ -1,1 +1,1 @@
-import subprocessdef start_capture(interface="eth0"):    return subprocess.Popen([        "tcpdump",        "-i", interface,        "-w", "capture/live_%Y%m%d_%H%M%S.pcap"    ])def stop_capture(proc):    if proc:        proc.terminate()
+import subprocessimport platformIS_WINDOWS = platform.system() == "Windows"def start_capture(interface="eth0"):    return subprocess.Popen([        "tcpdump",        "-i", interface,        "-w", "capture/live_%Y%m%d_%H%M%S.pcap"    ])def stop_capture(proc):    if proc:        proc.terminate()
