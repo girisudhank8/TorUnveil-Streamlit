@@ -105,7 +105,7 @@ if st.session_state.running:
                 st.warning(f"🚨 Tor traffic detected in {result['pcap']}")
 
     time.sleep(1)
-    st.experimental_rerun()
+    st.rerun()
 
 # =========================
 # Results Display
